@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
   namespace :api do
+    get 'reminders/index'
+    get 'reminders/update'
+  end
+  namespace :api do
     get 'medicines/index'
     get 'medicines/create'
     get 'medicines/update'
