@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
   namespace :api do
+    get 'allergies/index'
+    get 'allergies/create'
+    get 'allergies/update'
+    get 'allergies/destroy'
+  end
+  namespace :api do
     get 'medical/index'
     get 'medical/update'
   end
