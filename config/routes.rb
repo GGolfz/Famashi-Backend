@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   
   namespace :api do
+    get 'user/index'
+    get 'user/update'
+    get 'user/password'
+    get 'user/image'
+  end
+  namespace :api do
     get 'auth/register'
     get 'auth/login'
   end

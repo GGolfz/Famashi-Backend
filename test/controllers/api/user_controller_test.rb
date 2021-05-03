@@ -6,8 +6,18 @@ class Api::UserControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should get show" do
-    get api_user_show_url
+  test "should get update" do
+    get api_user_update_url
+    assert_response :success
+  end
+
+  test "should get password" do
+    get api_user_password_url
+    assert_response :success
+  end
+
+  test "should get image" do
+    get api_user_image_url
     assert_response :success
   end
 end
