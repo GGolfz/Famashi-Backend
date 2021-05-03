@@ -1,34 +1,15 @@
 Rails.application.routes.draw do
   
   namespace :api do
-    get 'reminders/index'
-    get 'reminders/update'
-  end
-  namespace :api do
-    get 'medicines/index'
-    get 'medicines/create'
-    get 'medicines/update'
-    get 'medicines/destroy'
-  end
-  namespace :api do
-    get 'allergies/index'
-    get 'allergies/create'
-    get 'allergies/update'
-    get 'allergies/destroy'
-  end
-  namespace :api do
-    get 'medical/index'
-    get 'medical/update'
-  end
-  namespace :api do
-    get 'user/index'
-    get 'user/update'
-    get 'user/password'
-    get 'user/image'
-  end
-  namespace :api do
-    get 'auth/register'
-    get 'auth/login'
+    match 'auth/register', to: 'auth#register', via: [:post]
+    match 'auth/login', to: 'auth#login', via: [:post]
+    match 'user/password', to: 'user#password', via: [:post]
+    match 'user/image', to: 'user#image', via: [:post]
+    resources :user, only: [:index,:update]
+    resources :medical, only: [:index,:update]
+    resources :reminders, only: [:index,:update]
+    resources :allergies, only: [:index,:create,:update,:destroy]
+    resources :medicines, only: [:index,:create,:update,:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
