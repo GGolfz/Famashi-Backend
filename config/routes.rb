@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
   namespace :api do
+    get 'medical/index'
+    get 'medical/update'
+  end
+  namespace :api do
     get 'user/index'
     get 'user/update'
     get 'user/password'
