@@ -1,6 +1,9 @@
 require 'bcrypt'
 require 'jwt'
+
 class Api::AuthController < ApplicationController
+  include Response
+  include Token
   def register
     body = JSON.parse(request.body.read)
     email = body["email"]
@@ -9,18 +12,15 @@ class Api::AuthController < ApplicationController
     lastname = body["lastname"]
     hashedPassword = BCrypt::Password.create(password)
     if User.find_by(email: email)
-      render json: {
-        message: 'This email is already taken'
-      }, status: 400
+      error_response('This email is already taken')
       return
     end
     @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
-    payload = {user_id: @user.id}
-    token = JWT.encode payload, rsa_private = 'RS256'
-    render json: {
+    token = generate_token(@user.id)
+    success_response({
       user: @user,
       token: token
-    }, status: 200
+    })
   end
 
   def login
@@ -29,24 +29,19 @@ class Api::AuthController < ApplicationController
     password = body["password"]
     @user = User.find_by(email: email)
     if @user == nil
-      render json: {
-        message: 'This email does not exist'
-      }, status: 404
+      error_response('This email does not exist', 404)
       return
     end
 
     oldpassword = BCrypt::Password.new(@user.password)
     if oldpassword != password
-      render json: {
-        message: 'Wrong password'
-      }, status: 403
+      error_response('This email does not exist')
       return
     end
-    payload = {user_id: @user.id}
-    token = JWT.encode payload, rsa_private = 'RS256'
-    render json: {
+    token = generate_token(@user.id)
+    success_response({
       user: @user,
       token: token
-    }
+    })
   end
 end
