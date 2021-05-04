@@ -1,0 +1,2 @@
+class UsageHistory < ApplicationRecord
+end

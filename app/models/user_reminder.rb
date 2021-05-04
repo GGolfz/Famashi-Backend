@@ -1,0 +1,2 @@
+class UserReminder < ApplicationRecord
+end
