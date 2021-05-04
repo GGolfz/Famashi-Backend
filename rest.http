@@ -1,7 +1,7 @@
 POST http://localhost:3000/api/auth/register HTTP/1.1
 
 {
-	"username":"ggolfz",
+	"email":"ggolfz",
 	"password":"ggolfz",
 	"firstname":"ggolfz",
 	"lastname":"ggolfz"
@@ -10,6 +10,6 @@ POST http://localhost:3000/api/auth/register HTTP/1.1
 POST http://localhost:3000/api/auth/login HTTP/1.1
 
 {
-	"username":"ggolfz",
+	"email":"ggolfz",
 	"password":"ggolfz"
 }
