@@ -7,7 +7,7 @@ RUN apt-get install -y nodejs
 RUN mkdir /usr/app
 WORKDIR /usr/app
 
-COPY Gemfile* .
+COPY Gemfile .
 RUN bundle install
 COPY . .
 
