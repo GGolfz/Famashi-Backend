@@ -1,7 +1,7 @@
 class Api::UserController < ApplicationController
   def index
     render json: {
-      success: true
+      success: true,
     }, status: 200
   end
 
