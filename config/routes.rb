@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  namespace :api do
+  namespace :api, defaults: {format: :json} do
     match 'auth/register', to: 'auth#register', via: [:post]
     match 'auth/login', to: 'auth#login', via: [:post]
     match 'user/password', to: 'user#password', via: [:post]
