@@ -16,3 +16,12 @@ POST http://localhost:3000/api/auth/login HTTP/1.1
 
 GET http://localhost:3000/api/user HTTP/1.1
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.dKx0I7CZUDBXHOFQuouBr5gqmCON3X9C2lpyntW5_6Q
+
+PATCH http://localhost:3000/api/user HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.dKx0I7CZUDBXHOFQuouBr5gqmCON3X9C2lpyntW5_6Q
+
+{
+	"email": "ggolfz",
+	"firstname": "I'm Golf",
+	"lastname": "ggolfz"
+}
