@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_04_120427) do
+ActiveRecord::Schema.define(version: 2021_05_05_141504) do
 
   create_table "allergies", force: :cascade do |t|
     t.integer "users_id"
-    t.string "machine_name"
+    t.string "medicine_name"
     t.string "side_effect"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

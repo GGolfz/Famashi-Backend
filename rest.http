@@ -1,7 +1,7 @@
 POST http://localhost:3000/api/auth/register HTTP/1.1
 
 {
-	"email":"ggolfz",
+	"email":"ggolfz1",
 	"password":"ggolfz",
 	"firstname":"ggolfz",
 	"lastname":"ggolfz"
@@ -42,3 +42,25 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.R
 {
 	"gender": 1
 }
+
+GET http://localhost:3000/api/allergies HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+
+POST http://localhost:3000/api/allergies HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+
+{
+	"medicine_name": "test2",
+	"side_effect": "test2"
+}
+
+PATCH http://localhost:3000/api/allergies/1 HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+
+{
+	"medicine_name": "newtest1",
+	"side_effect": "test1"
+}
+
+DELETE http://localhost:3000/api/allergies/1 HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
