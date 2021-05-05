@@ -16,7 +16,8 @@ class Api::AuthController < ApplicationController
       return
     end
     @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
-    @userInfo = UserInfo.create(users_id:@user.id)
+    UserInfo.create(users_id:@user.id)
+    # Todo: Generate User Reminder Here
     token = generate_token(@user.id)
     @user.password = nil
     success_response({

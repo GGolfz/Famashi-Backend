@@ -8,6 +8,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.R
     "remain_amount": 200,
     "medicine_unit": 0,
     "dosage_amount": 20,
-    "dosage_unit": 0
+    "dosage_unit": 0,
+	"reminder": [1,2,3,4]
 }
 

@@ -29,6 +29,7 @@ class Api::MedicinesController < ApplicationController
     medicine_unit = body["medicine_unit"]   
     dosage_amount = body["dosage_amount"]   
     dosage_unit = body["dosage_unit"]  
+    # reminder = body["reminder"]
     # medicine_image = body["medicine_image"]   
     # medicine_leaflet = body["medicine_leaflet"]
     Medicine.create(
@@ -41,6 +42,7 @@ class Api::MedicinesController < ApplicationController
       dosage_amount: dosage_amount,
       dosage_unit: dosage_unit
     )
+
     @medicines = Medicine.where(users_id: user_id)
     success_response(@medicines)
   end
@@ -67,6 +69,7 @@ class Api::MedicinesController < ApplicationController
     medicine_unit = body["medicine_unit"]   
     dosage_amount = body["dosage_amount"]   
     dosage_unit = body["dosage_unit"]  
+    remidner = body["reminder"]
     @medicine.update(
       users_id: user_id, 
       medicine_name: medicine_name, 
