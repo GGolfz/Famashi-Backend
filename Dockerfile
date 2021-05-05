@@ -10,5 +10,5 @@ WORKDIR /usr/app
 COPY Gemfile* .
 RUN bundle install
 COPY . .
-CMD ["bin/rails","db:migrate"]
+CMD ["bin/rails","db:schema:load"]
 CMD ["bin/rails","server","-p","3000","-b","0.0.0.0"]

@@ -1,0 +1,13 @@
+POST http://localhost:3000/api/medicines HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+
+{
+	"medicine_name": "name",
+	"description": "desc",
+    "total_amount": 1000,
+    "remain_amount": 200,
+    "medicine_unit": "ml",
+    "dosage_amount": "20",
+    "dosage_unit": "ml"
+}
+
