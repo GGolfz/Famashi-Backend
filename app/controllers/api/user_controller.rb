@@ -5,6 +5,10 @@ class Api::UserController < ApplicationController
     token = request.headers['Authorization'].split(' ').last
     user_id = extract_token(token)
     @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
     @user.password = nil
     success_response({
       user: @user,
@@ -25,6 +29,10 @@ class Api::UserController < ApplicationController
       return
     end
     @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
     @user.email = email
     @user.firstname = firstname
     @user.lastname = lastname
@@ -36,6 +44,22 @@ class Api::UserController < ApplicationController
   end
 
   def password
+    token = request.headers['Authorization'].split(' ').last
+    user_id = extract_token(token)
+    body = JSON.parse(request.body.read)
+    password = body["password"]
+    @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
+    hashedPassword = BCrypt::Password.create(password)
+    @user.password = hashedPassword
+    @user.save
+    @user.password = nil
+    success_response({
+      user: @user
+    })
   end
 
   def image

@@ -25,3 +25,10 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.dK
 	"firstname": "I'm Golf",
 	"lastname": "ggolfz"
 }
+
+PATCH http://localhost:3000/api/user/password HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo3fQ.dKx0I7CZUDBXHOFQuouBr5gqmCON3X9C2lpyntW5_6Q
+
+{
+	"password": "ggolfz"
+}

@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: :json} do
     match 'auth/register', to: 'auth#register', via: [:post]
     match 'auth/login', to: 'auth#login', via: [:post]
-    match 'user/password', to: 'user#password', via: [:post]
-    match 'user/image', to: 'user#image', via: [:post]
+    match 'user/password', to: 'user#password', via: [:patch]
+    match 'user/image', to: 'user#image', via: [:patch]
     match 'user', to: 'user#update', via: [:patch]
     resources :user, only: [:index]
     resources :medical, only: [:index,:update]
