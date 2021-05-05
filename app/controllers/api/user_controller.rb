@@ -33,10 +33,7 @@ class Api::UserController < ApplicationController
       error_response('Unauthorize', 401)
       return
     end
-    @user.email = email
-    @user.firstname = firstname
-    @user.lastname = lastname
-    @user.save
+    @user.update(email:email,firstname:firstname,lastname:lastname)
     @user.password = nil
     success_response({
       user: @user
@@ -54,8 +51,7 @@ class Api::UserController < ApplicationController
       return
     end
     hashedPassword = BCrypt::Password.create(password)
-    @user.password = hashedPassword
-    @user.save
+    @user.update(password: hashedPassword)
     @user.password = nil
     success_response({
       user: @user
