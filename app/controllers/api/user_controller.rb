@@ -3,9 +3,11 @@ class Api::UserController < ApplicationController
   def index
     token = request.headers['Authorization'].split(' ').last
     user_id = extract_token(token)
+    @user = User.find_by(id: user_id)
+    @user.password = nil
     render json: {
-      success: true,
-      user_id: user_id
+      user: @user,
+      token: token
     }, status: 200
   end
 
