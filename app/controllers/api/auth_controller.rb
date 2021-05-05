@@ -17,6 +17,7 @@ class Api::AuthController < ApplicationController
     end
     @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
     token = generate_token(@user.id)
+    @user.password = nil
     success_response({
       user: @user,
       token: token
@@ -39,6 +40,7 @@ class Api::AuthController < ApplicationController
       return
     end
     token = generate_token(@user.id)
+    @user.password = nil
     success_response({
       user: @user,
       token: token
