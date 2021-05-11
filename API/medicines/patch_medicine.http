@@ -1,0 +1,14 @@
+PATCH http://localhost:3000/api/medicines/1 HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+
+{
+	"medicine_name": "newname",
+    "description": "desc",
+    "total_amount": 1000,
+    "remain_amount": 200,
+    "medicine_unit": 0,
+    "dosage_amount": 20,
+    "dosage_unit": 0,
+	"reminder": [1,2,3,4]
+}
+
