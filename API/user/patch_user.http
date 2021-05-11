@@ -2,7 +2,7 @@ PATCH http://localhost:3000/api/user HTTP/1.1
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
 
 {
-	"email": "ggolfz",
+	"email": "ggolfz@ggolfz.com",
 	"firstname": "I'm Golf",
 	"lastname": "ggolfz"
 }
