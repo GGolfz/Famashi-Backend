@@ -1,6 +1,9 @@
 PATCH http://localhost:3000/api/medical HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxNH0.P32xhlDr9Lr3gmNeo1-fg17_B_7AXy86fjR3L0ySDaQ
 
 {
-	"gender": 1
+	"gender": 0,
+	"weight": 70.0,
+	"height": 173,
+	"isG6PD": true
 }

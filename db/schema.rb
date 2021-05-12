@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_05_141504) do
+ActiveRecord::Schema.define(version: 2021_05_12_153157) do
 
   create_table "allergies", force: :cascade do |t|
     t.integer "users_id"
@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2021_05_05_141504) do
     t.string "lastname"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "profile_pic"
   end
 
 end
