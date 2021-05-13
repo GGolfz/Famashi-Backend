@@ -1,0 +1,12 @@
+PATCH http://localhost:3000/api/user/notification HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOH0.6lTgsN2SLv76p8A5pG_OqbqDxn-QNpyxRllA2raJLsY
+
+{
+	"BEFORE_MORNING": "07:10",
+    "AFTER_MORNING": "08:10",
+    "BEFORE_NOON": "12:10",
+    "AFTER_NOON": "13:10",
+    "BEFORE_EVENING": "17:10",
+    "AFTER_EVENING": "18:10",
+    "BEDTIME":"22:10"
+}
