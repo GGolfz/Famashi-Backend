@@ -16,8 +16,14 @@ class Api::AuthController < ApplicationController
       return
     end
     @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
-    UserInfo.create(users_id:@user.id)
-    # Todo: Generate User Reminder Here
+    UserInfo.create(users_id: @user.id)
+    UserReminder.create(users_id: @user.id,time_type: 0,time:'07:00')
+    UserReminder.create(users_id: @user.id,time_type: 1,time:'08:00')
+    UserReminder.create(users_id: @user.id,time_type: 2,time:'12:00')
+    UserReminder.create(users_id: @user.id,time_type: 3,time:'13:00')
+    UserReminder.create(users_id: @user.id,time_type: 4,time:'17:00')
+    UserReminder.create(users_id: @user.id,time_type: 5,time:'18:00')
+    UserReminder.create(users_id: @user.id,time_type: 6,time:'22:00')
     token = generate_token(@user.id)
     @user.password = nil
     success_response({

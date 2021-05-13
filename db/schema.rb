@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_12_153157) do
+ActiveRecord::Schema.define(version: 2021_05_13_072506) do
 
   create_table "allergies", force: :cascade do |t|
     t.integer "users_id"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(version: 2021_05_12_153157) do
 
   create_table "user_reminders", force: :cascade do |t|
     t.integer "users_id"
-    t.integer "type"
+    t.integer "time_type"
     t.time "time"
     t.index ["users_id"], name: "index_user_reminders_on_users_id"
   end
