@@ -75,4 +75,42 @@ class Api::UserController < ApplicationController
     })
   end
 
+  def notification_get
+    token = request.headers['Authorization'].split(' ').last
+    user_id = extract_token(token)
+    @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
+    @reminders = UserReminder.where(users_id: user_id)
+    success_response(@reminders)
+  end
+
+  def notification_patch
+    token = request.headers['Authorization'].split(' ').last
+    user_id = extract_token(token)
+    @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
+    body = JSON.parse(request.body.read)
+    data = [
+      body["BEFORE_MORNING"],
+      body["AFTER_MORNING"],
+      body["BEFORE_NOON"],
+      body["AFTER_NOON"],
+      body["BEFORE_EVENING"],
+      body["AFTER_EVENING"],
+      body["BEDTIME"]
+    ]
+    data.each_with_index do |item, index|
+      @reminder = UserReminder.find_by(users_id: @user.id, time_type: index)
+      @reminder.update(time: data[index])
+    end
+    @reminders = UserReminder.where(users_id: user_id)
+    success_response(@reminders)
+
+  end
 end

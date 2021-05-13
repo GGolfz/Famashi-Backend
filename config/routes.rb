@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     match 'auth/login', to: 'auth#login', via: [:post]
     match 'user/password', to: 'user#password', via: [:patch]
     match 'user/image', to: 'user#image', via: [:patch]
+    match 'user/notification', to: 'user#notification_get', via:[:get]
+    match 'user/notification', to: 'user#notification_patch', via:[:patch]
     match 'user', to: 'user#update', via: [:patch]
     match 'medical', to: 'medical#update', via: [:patch]
     resources :user, only: [:index]
