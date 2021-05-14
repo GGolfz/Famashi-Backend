@@ -84,7 +84,21 @@ class Api::UserController < ApplicationController
       return
     end
     @reminders = UserReminder.where(users_id: user_id)
-    success_response(@reminders)
+    @user_reminder = {}
+    map = {
+      0 => "BEFORE_MORNING",
+      1 => "AFTER_MORNING",
+      2 => "BEFORE_NOON",
+      3 => "AFTER_NOON",
+      4 => "BEFORE_EVENING",
+      5 => "AFTER_EVENING",
+      6 => "BEDTIME"
+    }
+    @reminders.each do |item|
+      time = item.time.strftime('%H:%M')
+      @user_reminder[map[item.time_type]] = time
+    end
+    success_response(@user_reminder)
   end
 
   def notification_patch
@@ -110,7 +124,20 @@ class Api::UserController < ApplicationController
       @reminder.update(time: data[index])
     end
     @reminders = UserReminder.where(users_id: user_id)
-    success_response(@reminders)
-
+    @user_reminder = {}
+    map = {
+      0 => "BEFORE_MORNING",
+      1 => "AFTER_MORNING",
+      2 => "BEFORE_NOON",
+      3 => "AFTER_NOON",
+      4 => "BEFORE_EVENING",
+      5 => "AFTER_EVENING",
+      6 => "BEDTIME"
+    }
+    @reminders.each do |item|
+      time = item.time.strftime('%H:%M')
+      @user_reminder[map[item.time_type]] = time
+    end
+    success_response(@user_reminder)
   end
 end
