@@ -30,7 +30,7 @@ class Api::MedicinesController < ApplicationController
     @reminders = Reminder.where(medicines_id: @medicine.id)
     success_response({medicine: @medicine,reminder: @reminders})
   end
-  
+
   def create
     token = request.headers['Authorization'].split(' ').last
     user_id = extract_token(token)
@@ -62,8 +62,7 @@ class Api::MedicinesController < ApplicationController
     )
     reminder = reminder.split(',')
     reminder.each do |item|
-      @user_reminder = UserReminder.find_by(users_id: @user.id,time_type: item)
-      Reminder.create(medicines_id: @medicine.id, user_reminders_id: @user_reminder.id)
+      Reminder.create(medicines_id: @medicine.id, time_type: item)
     end
     
     if upload_image == 'true'
@@ -130,8 +129,7 @@ class Api::MedicinesController < ApplicationController
     reminder = reminder.split(',')
     Reminder.delete_by(medicines_id: @medicine.id)
     reminder.each do |item|
-      @user_reminder = UserReminder.find_by(users_id: @user.id,time_type: item)
-      Reminder.create(medicines_id: @medicine.id, user_reminders_id: @user_reminder.id)
+      Reminder.create(medicines_id: @medicine.id, time_type: item)
     end
 
     if upload_image == 'true'
