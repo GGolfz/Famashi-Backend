@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_13_072506) do
+ActiveRecord::Schema.define(version: 2021_05_14_190958) do
 
   create_table "allergies", force: :cascade do |t|
     t.integer "users_id"
@@ -27,9 +27,9 @@ ActiveRecord::Schema.define(version: 2021_05_13_072506) do
     t.text "description"
     t.integer "total_amount"
     t.integer "remain_amount"
-    t.integer "medicine_unit"
+    t.string "medicine_unit"
     t.integer "dosage_amount"
-    t.integer "dosage_unit"
+    t.string "dosage_unit"
     t.string "medicine_image"
     t.string "medicine_leaflet"
     t.datetime "created_at", precision: 6, null: false
@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2021_05_13_072506) do
 
   create_table "reminders", force: :cascade do |t|
     t.integer "medicines_id"
-    t.integer "user_reminders_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "user_reminders_id"
     t.index ["medicines_id"], name: "index_reminders_on_medicines_id"
     t.index ["user_reminders_id"], name: "index_reminders_on_user_reminders_id"
   end
@@ -93,4 +93,5 @@ ActiveRecord::Schema.define(version: 2021_05_13_072506) do
     t.string "profile_pic"
   end
 
+  add_foreign_key "reminders", "user_reminders", column: "user_reminders_id"
 end

@@ -1,5 +1,5 @@
 POST http://localhost:3000/api/medicines HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.RMSl5t1Jvvl_m9oVcVszB5mgAzHhcsqetoMp-6hF-vw
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOH0.6lTgsN2SLv76p8A5pG_OqbqDxn-QNpyxRllA2raJLsY
 
 {
 	"medicine_name": "name",
@@ -9,6 +9,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxMH0.R
     "medicine_unit": "ml",
     "dosage_amount": "20",
     "dosage_unit": "ml",
-	"reminder": [1,2,3,4]
+	"reminder": "1,2,3,4"
 }
 

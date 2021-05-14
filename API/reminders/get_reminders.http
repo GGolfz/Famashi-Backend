@@ -1,0 +1,2 @@
+GET http://localhost:3000/api/reminders HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMH0.leGHY3ZtlWNEo7Xnjqb3HQYDqaKvednTTkfX1O8TJcU

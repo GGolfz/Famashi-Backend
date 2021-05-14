@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :medical, only: [:index,]
     resources :reminders, only: [:index,:update]
     resources :allergies, only: [:index,:create,:update,:destroy]
-    resources :medicines, only: [:index,:create,:update,:destroy]
+    resources :medicines, only: [:index,:show,:create,:update,:destroy]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
