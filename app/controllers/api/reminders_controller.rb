@@ -26,7 +26,7 @@ class Api::RemindersController < ApplicationController
     @medicine = Medicine.find_by(id: @reminder.medicines_id)
     @medicine.remain_amount -= @medicine.dosage_amount
     @medicine.save
-    UsageHistory.create(users_id: @user.id, medicines_id: @medicine.id, amount: @medicine.dosage_amount, amount_unit: @medicine.dosage_unit)
+    UsageHistory.create(users_id: @user.id, medicines_id: @medicine.id, amount: @medicine.dosage_amount, amount_unit: @medicine.dosage_unit,date: Time.now,time: Time.now)
     @reminders = Reminder.where(medicines_id: Medicine.where(users_id:@user.id))
     success_response(@reminders)
   end
