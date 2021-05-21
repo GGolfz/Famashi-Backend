@@ -44,7 +44,7 @@ class Api::AuthController < ApplicationController
 
     oldpassword = BCrypt::Password.new(@user.password)
     if oldpassword != password
-      error_response('This email does not exist')
+      error_response('Password is incorrect')
       return
     end
     token = generate_token(@user.id)
