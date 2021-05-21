@@ -45,8 +45,7 @@ class Api::MedicinesController < ApplicationController
     total_amount = body["total_amount"]  
     remain_amount = body["remain_amount"]   
     medicine_unit = body["medicine_unit"]   
-    dosage_amount = body["dosage_amount"]   
-    dosage_unit = body["dosage_unit"]  
+    dosage_amount = body["dosage_amount"] 
     reminder = body["reminder"] 
     upload_image = body["upload_image"]
     upload_leaflet = body["upload_leaflet"]
@@ -58,7 +57,6 @@ class Api::MedicinesController < ApplicationController
       remain_amount: remain_amount,
       medicine_unit: medicine_unit,
       dosage_amount: dosage_amount,
-      dosage_unit: dosage_unit
     )
     reminder = reminder.split(',')
     reminder.each do |item|
@@ -110,7 +108,6 @@ class Api::MedicinesController < ApplicationController
     remain_amount = body["remain_amount"]   
     medicine_unit = body["medicine_unit"]   
     dosage_amount = body["dosage_amount"]   
-    dosage_unit = body["dosage_unit"]
     reminder = body["reminder"]
     upload_image = body["upload_image"]
     upload_leaflet = body["upload_leaflet"]
@@ -123,7 +120,6 @@ class Api::MedicinesController < ApplicationController
       remain_amount: remain_amount,
       medicine_unit: medicine_unit,
       dosage_amount: dosage_amount,
-      dosage_unit: dosage_unit
     )
 
     reminder = reminder.split(',')
