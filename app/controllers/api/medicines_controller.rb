@@ -27,7 +27,7 @@ class Api::MedicinesController < ApplicationController
       error_response('Not found', 404)
       return
     end
-    @reminders = Reminder.where(medicines_id: @medicine.id)
+    @reminders = Reminder.joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(medicines_id: @medicine.id)
     success_response({medicine: @medicine,reminder: @reminders})
   end
 
