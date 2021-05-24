@@ -9,7 +9,7 @@ class Api::MedicinesController < ApplicationController
       error_response('Unauthorize', 401)
       return
     end
-    @medicines = Medicine.joins("LEFT JOIN reminders ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(users_id:@user.id).select("*")
+    @medicines = Medicine.where(users_id: user_id)
     success_response(@medicines)
   end
 
