@@ -54,7 +54,7 @@ class Api::MedicinesController < ApplicationController
       medicine_name: medicine_name, 
       description: description,
       total_amount: total_amount,
-      remain_amount: remain_amount,
+      remain_amount: total_amount,
       medicine_unit: medicine_unit,
       dosage_amount: dosage_amount,
     )
