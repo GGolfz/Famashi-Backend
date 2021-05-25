@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_21_133439) do
+ActiveRecord::Schema.define(version: 2021_05_25_162902) do
 
   create_table "allergies", force: :cascade do |t|
     t.integer "users_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2021_05_21_133439) do
     t.time "time"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "time_type"
     t.index ["medicines_id"], name: "index_usage_histories_on_medicines_id"
     t.index ["users_id"], name: "index_usage_histories_on_users_id"
   end
