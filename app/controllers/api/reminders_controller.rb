@@ -9,8 +9,9 @@ class Api::RemindersController < ApplicationController
       error_response('Unauthorize', 401)
       return
     end
-    @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("*")
-    success_response(@reminders)
+    @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("reminders.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount,medicines.medicine_image,user_reminders.time_type,user_reminders.time")
+    @usages = UsageHistory.where(date:Time.now).select("*");
+    success_response({reminders: @reminders,usages: @usages})
   end
 
   def update
@@ -23,11 +24,20 @@ class Api::RemindersController < ApplicationController
     end
     @id = params[:id]
     @reminder = Reminder.find_by(id: @id)
+    if @reminder == nil
+      error_response('Reminder not found',404)
+      return
+    end
     @medicine = Medicine.find_by(id: @reminder.medicines_id)
+    if @medicine == nil
+      error_response('Medicine not found',404)
+      return
+    end
     @medicine.remain_amount -= @medicine.dosage_amount
     @medicine.save
-    UsageHistory.create(users_id: @user.id, medicines_id: @medicine.id, amount: @medicine.dosage_amount, amount_unit: @medicine.dosage_unit,date: Time.now,time: Time.now)
-    @reminders = Reminder.where(medicines_id: Medicine.where(users_id:@user.id))
-    success_response(@reminders)
+    UsageHistory.create(users_id: @user.id, medicines_id: @medicine.id, amount: @medicine.dosage_amount, amount_unit: @medicine.medicine_unit,date: Time.now,time: Time.now,time_type: UserReminder.find_by(id: @reminder.user_reminders_id).time_type)
+    @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("reminders.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount,medicines.medicine_image,user_reminders.time_type,user_reminders.time")
+    @usages = UsageHistory.where(date:Time.now).select("*");
+    success_response({reminders: @reminders,usages: @usages})
   end
 end

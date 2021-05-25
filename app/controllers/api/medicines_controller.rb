@@ -24,7 +24,7 @@ class Api::MedicinesController < ApplicationController
     @id = params[:id]
     @medicine = Medicine.find_by(id: @id,users_id: user_id)
     if @medicine == nil
-      error_response('Not found', 404)
+      error_response('Medicine not found', 404)
       return
     end
     @reminders = Reminder.joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(medicines_id: @medicine.id).select("*")
@@ -98,7 +98,7 @@ class Api::MedicinesController < ApplicationController
     @id = params[:id]
     @medicine = Medicine.find_by(id: @id,users_id: user_id)
     if @medicine == nil
-      error_response('Not found', 404)
+      error_response('Medicine not found', 404)
       return
     end
     body = params
@@ -164,7 +164,7 @@ class Api::MedicinesController < ApplicationController
     @id = params[:id]
     @medicine = Medicine.find_by(id: @id,users_id: user_id)
     if @medicine == nil
-      error_response('Not found', 404)
+      error_response('Medicine not found', 404)
       return
     end
     Medicine.destroy_by(id: @id,users_id: user_id)
