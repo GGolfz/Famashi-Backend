@@ -64,7 +64,7 @@ class Api::UserController < ApplicationController
       return
     end
     if @user.password != old_password 
-      error_response('Wrong Password',400)
+      error_response('Your password is incorrect',400)
       return
     end
     hashedPassword = BCrypt::Password.create(password)

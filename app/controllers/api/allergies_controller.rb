@@ -40,7 +40,7 @@ class Api::AllergiesController < ApplicationController
     @id = params[:id]
     @allergy = Allergy.find_by(id: @id,users_id: user_id)
     if @allergy == nil
-      error_response('Not found', 404)
+      error_response('Allergy not found', 404)
       return
     end
     body = JSON.parse(request.body.read)
@@ -63,7 +63,7 @@ class Api::AllergiesController < ApplicationController
     @id = params[:id]
     @allergy = Allergy.find_by(id: @id,users_id: user_id)
     if @allergy == nil
-      error_response('Not found', 404)
+      error_response('Allergy not found', 404)
       return
     end
     Allergy.destroy_by(id: @id,users_id: user_id)
