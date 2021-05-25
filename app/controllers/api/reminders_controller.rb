@@ -10,7 +10,8 @@ class Api::RemindersController < ApplicationController
       return
     end
     @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("*")
-    success_response(@reminders)
+    @usages = UsageHistory.where(date:Time.now).select("*");
+    success_response({reminders: @reminders,usages: @usages})
   end
 
   def update
