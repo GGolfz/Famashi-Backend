@@ -28,7 +28,8 @@ class Api::RemindersController < ApplicationController
     @medicine.remain_amount -= @medicine.dosage_amount
     @medicine.save
     UsageHistory.create(users_id: @user.id, medicines_id: @medicine.id, amount: @medicine.dosage_amount, amount_unit: @medicine.dosage_unit,date: Time.now,time: Time.now)
-    @reminders = Reminder.where(medicines_id: Medicine.where(users_id:@user.id))
-    success_response(@reminders)
+    @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("*")
+    @usages = UsageHistory.where(date:Time.now).select("*");
+    success_response({reminders: @reminders,usages: @usages})
   end
 end
