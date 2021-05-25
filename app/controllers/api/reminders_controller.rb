@@ -9,7 +9,7 @@ class Api::RemindersController < ApplicationController
       error_response('Unauthorize', 401)
       return
     end
-    @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("reminders.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount,medicine.medicine_image,user_reminders.time_type,user_reminders.time")
+    @reminders = Reminder.joins("INNER JOIN medicines ON medicines.id = reminders.medicines_id").joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:medicines => {users_id:@user.id,remain_amount: 1..Float::INFINITY}).select("reminders.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount,medicines.medicine_image,user_reminders.time_type,user_reminders.time")
     @usages = UsageHistory.where(date:Time.now).select("*");
     success_response({reminders: @reminders,usages: @usages})
   end
