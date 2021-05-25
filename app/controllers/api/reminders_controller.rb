@@ -24,7 +24,15 @@ class Api::RemindersController < ApplicationController
     end
     @id = params[:id]
     @reminder = Reminder.find_by(id: @id)
+    if @reminder == nil
+      error_response('Reminder not found',404)
+      return
+    end
     @medicine = Medicine.find_by(id: @reminder.medicines_id)
+    if @medicine == nil
+      error_response('Medicine not found',404)
+      return
+    end
     @medicine.remain_amount -= @medicine.dosage_amount
     @medicine.save
     UsageHistory.create(users_id: @user.id, medicines_id: @medicine.id, amount: @medicine.dosage_amount, amount_unit: @medicine.dosage_unit,date: Time.now,time: Time.now)
