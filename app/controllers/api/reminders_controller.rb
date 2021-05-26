@@ -51,4 +51,5 @@ class Api::RemindersController < ApplicationController
     end
     @reminders = Reminder.joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:user_reminders:{users_id: @user.id}).select("user_reminders.time_type,user_reminders.time").group(user_reminders:{:time_type,:time})
     success_response(@reminders)
+  end
 end
