@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     match 'user/password', to: 'user#password', via: [:patch]
     match 'user/notification', to: 'user#notification_get', via:[:get]
     match 'user/notification', to: 'user#notification_patch', via:[:patch]
+    match 'user/history', to: 'user#history', via:[:get]
     match 'user', to: 'user#update', via: [:patch]
     match 'medical', to: 'medical#update', via: [:patch]
     resources :user, only: [:index]

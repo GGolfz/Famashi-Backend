@@ -140,4 +140,15 @@ class Api::UserController < ApplicationController
     end
     success_response(@user_reminder)
   end
+
+  def history
+    token = request.headers['Authorization'].split(' ').last
+    user_id = extract_token(token)
+    @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
+    @usages = UsageHistory.joins("INNER JOIN medicines ON medicines.id = usage_histories.medicines_id").where(users_id: @user.id).where('date >= ?',Time.now - 7.days).select("usage_histories.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount");
+    return success_response(@usages)
 end
