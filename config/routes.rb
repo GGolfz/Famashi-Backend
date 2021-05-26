@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     match 'user/notification', to: 'user#notification_patch', via:[:patch]
     match 'user/history', to: 'user#history', via:[:get]
     match 'user', to: 'user#update', via: [:patch]
-    match 'reminders/list', to: 'reminder#list', via: [:get]
+    match 'reminders/list', to: 'reminders#list', via: [:get]
     match 'medical', to: 'medical#update', via: [:patch]
     resources :user, only: [:index]
     resources :medical, only: [:index,]
