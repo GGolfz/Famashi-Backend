@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_25_162902) do
+ActiveRecord::Schema.define(version: 2021_05_26_070634) do
 
   create_table "allergies", force: :cascade do |t|
     t.integer "users_id"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 2021_05_25_162902) do
     t.integer "users_id"
     t.integer "medicines_id"
     t.integer "amount"
-    t.integer "amount_unit"
+    t.string "amount_unit"
     t.date "date"
     t.time "time"
     t.datetime "created_at", precision: 6, null: false
