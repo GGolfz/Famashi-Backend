@@ -150,5 +150,6 @@ class Api::UserController < ApplicationController
       return
     end
     @usages = UsageHistory.joins("INNER JOIN medicines ON medicines.id = usage_histories.medicines_id").where(users_id: @user.id).where('date >= ?',Time.now - 7.days).select("usage_histories.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount");
-    return success_response(@usages)
+    success_response(@usages)
+  end
 end
