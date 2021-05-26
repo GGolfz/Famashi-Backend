@@ -116,7 +116,7 @@ class Api::MedicinesController < ApplicationController
       users_id: user_id, 
       medicine_name: medicine_name, 
       description: description,
-      total_amount: [total_amount,remain_amount].max,
+      total_amount: [total_amount.to_i,remain_amount.to_i].max,
       remain_amount: remain_amount,
       medicine_unit: medicine_unit,
       dosage_amount: dosage_amount,
