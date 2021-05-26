@@ -40,4 +40,15 @@ class Api::RemindersController < ApplicationController
     @usages = UsageHistory.where(users_id: @user.id,date:Time.now).select("*");
     success_response({reminders: @reminders,usages: @usages})
   end
+  
+  def list
+    token = request.headers['Authorization'].split(' ').last
+    user_id = extract_token(token)
+    @user = User.find_by(id: user_id)
+    if @user == nil
+      error_response('Unauthorize', 401)
+      return
+    end
+    @reminders = Reminder.joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:user_reminders:{users_id: @user.id}).select("user_reminders.time_type,user_reminders.time").group(user_reminders:{:time_type,:time})
+    success_response(@reminders)
 end
