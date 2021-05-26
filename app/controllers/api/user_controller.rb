@@ -149,7 +149,7 @@ class Api::UserController < ApplicationController
       error_response('Unauthorize', 401)
       return
     end
-    @usages = UsageHistory.joins("INNER JOIN medicines ON medicines.id = usage_histories.medicines_id").where(users_id: @user.id).where('date >= ?',Time.now - 7.days).reverse_order(:created_at).select("usage_histories.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount");
+    @usages = UsageHistory.joins("INNER JOIN medicines ON medicines.id = usage_histories.medicines_id").where(users_id: @user.id).where('date >= ?',Time.now - 7.days).order(:created_at).reverse_order.select("usage_histories.*,medicines.medicine_name,medicines.medicine_unit,medicines.dosage_amount");
     success_response(@usages)
   end
 end
