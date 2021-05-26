@@ -1,2 +1,2 @@
-GET http://localhost:3000/api/user HTTP/1.1
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxOH0.6lTgsN2SLv76p8A5pG_OqbqDxn-QNpyxRllA2raJLsY
+GET http://13.76.251.165:3000/api/user/history HTTP/1.1
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyfQ.6vxU1H2x6myqYJsyym5X3SbqN8i6c1ZFHCRumnvBb7I
