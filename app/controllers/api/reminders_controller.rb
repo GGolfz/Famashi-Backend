@@ -49,7 +49,7 @@ class Api::RemindersController < ApplicationController
       error_response('Unauthorize', 401)
       return
     end
-    @reminders = Reminder.joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:user_reminders => {users_id: @user.id}).group(:user_reminders => [:time_type,:time]).select("user_reminders.time_type,user_reminders.time")
+    @reminders = Reminder.joins("INNER JOIN user_reminders ON user_reminders.id = reminders.user_reminders_id").where(:user_reminders => {users_id: @user.id}).group([:time_type,:time]).select("user_reminders.time_type,user_reminders.time")
     success_response(@reminders)
   end
 end
