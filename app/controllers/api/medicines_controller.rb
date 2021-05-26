@@ -125,7 +125,7 @@ class Api::MedicinesController < ApplicationController
     reminder = reminder.split(',')
     Reminder.delete_by(medicines_id: @medicine.id)
     reminder.each do |item|
-      Reminder.create(medicines_id: @medicine.id, user_reminders_id: UserReminder.find_by(time_type: item).id)
+      Reminder.create(medicines_id: @medicine.id, user_reminders_id: UserReminder.find_by(time_type: item,users_id: @user.id).id)
     end
 
     if upload_image == 'true'
