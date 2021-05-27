@@ -18,9 +18,9 @@ class Api::AuthController < ApplicationController
     num = rand(1..10)
     profile_img = 'Avatar-'
     if num < 10
-      profile_img += '0'+num.to_s
+      profile_img += '0'+num.to_s+'.png'
     else 
-      profile_img += num.to_s
+      profile_img += num.to_s+'.png'
     end
     @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
     UserInfo.create(users_id: @user.id)
