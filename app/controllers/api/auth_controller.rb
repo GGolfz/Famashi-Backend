@@ -22,7 +22,7 @@ class Api::AuthController < ApplicationController
     else 
       profile_img += num.to_s+'.png'
     end
-    @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
+    @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname,profile_pic: profile_img)
     UserInfo.create(users_id: @user.id)
     UserReminder.create(users_id: @user.id,time_type: 0,time:'07:00')
     UserReminder.create(users_id: @user.id,time_type: 1,time:'08:00')
