@@ -8,12 +8,19 @@ class Api::AuthController < ApplicationController
     body = JSON.parse(request.body.read)
     email = body["email"]
     password = body["password"]
-    firstname = body["firstname"];
-    lastname = body["lastname"];
+    firstname = body["firstname"]
+    lastname = body["lastname"]
     hashedPassword = BCrypt::Password.create(password)
     if User.find_by(email: email)
       error_response('This email is already taken')
       return
+    end
+    num = rand(1..10)
+    profile_img = 'Avatar-'
+    if num < 10
+      profile_img += '0'+num.to_s
+    else 
+      profile_img += num.to_s
     end
     @user = User.create(email: email,password: hashedPassword, firstname: firstname, lastname: lastname)
     UserInfo.create(users_id: @user.id)

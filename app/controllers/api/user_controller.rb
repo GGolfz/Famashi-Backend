@@ -39,7 +39,9 @@ class Api::UserController < ApplicationController
       upload_file = body['profile_img']
       ext = upload_file.original_filename.split('.').last
       filename = user_id.to_s + "-" + Time.now.to_i.to_s + "." + ext.to_s 
-      File.delete(Rails.root.join('public','uploads','profile_img', @user.profile_pic))
+      if @user.profile_pic.split('-')[0] != 'Avatar'
+        File.delete(Rails.root.join('public','uploads','profile_img', @user.profile_pic))
+      end
       File.open(Rails.root.join('public', 'uploads','profile_img', filename.to_s ), 'wb') do |file|
         file.write(upload_file.read)
       end
