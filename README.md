@@ -1,24 +1,17 @@
-# README
+# Famashi Backend
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This repository store the backend part code of Famashi Application
 
-Things you may want to cover:
+## About This Project
 
-* Ruby version
+Medicine Taking Reminder (Famashi) is an application that helps users about taking medicine. The users can add information about medicine such as type of medicine, dangerous level, initial amount, and when it should be taken. When the application has a medicine record, it will notify the user when medicine should be taken and also keep track of the number of medicines and notify when the medicine almost runs out.
 
-* System dependencies
+This project is the part of CSC291 Integrated Project II, Computer Science Program, School of Information Technology, King Mongkut's University of Technology Thonburi
 
-* Configuration
+## Contributor
 
-* Database creation
+<a href="https://github.com/GGolfz">Wisarut Kitticharoenphonngam (GGolfz)</a>
 
-* Database initialization
+<a href="https://github.com/coolkidneversleep">Kaewket Saelee (coolkidneversleep)</a>
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<a href="https://github.com/GelidGrapesGG">Kittiyaporn Takrudthieng (GelidGrapesGG)</a>
